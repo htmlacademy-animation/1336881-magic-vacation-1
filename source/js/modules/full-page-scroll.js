@@ -15,7 +15,9 @@ export default class FullPageScroll {
   }
 
   init() {
-    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {trailing: true}));
+    document.addEventListener(`wheel`, throttle(this.onScrollHandler, this.THROTTLE_TIMEOUT, {
+      trailing: true
+    }));
     window.addEventListener(`popstate`, this.onUrlHashChengedHandler);
 
     this.onUrlHashChanged();
@@ -59,6 +61,11 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
+
+      console.log('init');
+      console.log(this.screenElements)
+      document.querySelector('.intro__message p').classList.add('active');
+
     }, 100);
   }
 
@@ -79,7 +86,25 @@ export default class FullPageScroll {
       }
     });
 
+    console.log(this.activeScreen)
+
     document.body.dispatchEvent(event);
+
+    if (this.activeScreen == 1) {
+      console.log()
+      setTimeout(() => {
+        this.screenElements[1].querySelectorAll('.slider__item-text')[0].classList.add('active');
+      }, 200);
+      setTimeout(() => {
+        this.screenElements[1].querySelectorAll('.slider__item-text')[1].classList.add('active');
+      }, 600);
+    }
+
+    if (this.activeScreen == 4) {
+      setTimeout(() => {
+        this.screenElements[4].querySelector('.js-message-input').classList.add('active');
+      }, 600);
+    }
   }
 
   reCalculateActiveScreenPosition(delta) {
