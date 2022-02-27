@@ -7,6 +7,36 @@
       pointer-events: auto;
     }
   }
+
+  & .social-block__list {
+    & li {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    &--active {
+
+      & li {
+        opacity: 1;
+        transform: translateY(0px);
+
+        &:nth-child(1) {
+          transition-duration: 0.6s, 0.4s;
+          transition-property: opacity, transform;
+        }
+
+        &:nth-child(2) {
+          transition-duration: 1.2s, 0.8s;
+          transition-property: opacity, transform;
+        }
+
+        &:nth-child(3) {
+          transition-duration: 1.8s, 1.2s;
+          transition-property: opacity, transform;
+        }
+      }
+    }
+  }
 }
 
 .social-block__toggler {
@@ -17,6 +47,19 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
+
+  &.leave {
+    &:before {
+      background-color: $c-purple;
+      border-color: $c-purple;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    & svg path {
+      fill: $c-light;
+    }
+  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -35,6 +78,8 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
+
+    transition: all 0.3s ease;
   }
 
   svg {
@@ -62,7 +107,7 @@
       border-color: $c-purple;
     }
 
-    & + .social-block__list {
+    &+.social-block__list {
       opacity: 1;
       pointer-events: auto;
     }
@@ -87,7 +132,7 @@
   top: 100%;
   right: 0;
   margin-top: 1.5rem;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
 
   @media (min-width: $stop-scaling) {
@@ -168,6 +213,8 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+
+  transition: 0.3s ease;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
