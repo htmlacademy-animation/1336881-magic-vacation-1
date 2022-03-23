@@ -64,7 +64,7 @@
 
 @mixin init-transition-scale($start-value: 0, $finish-value: 1) {
   transform: translate(-50%, -50%) scale($start-value);
-  transition-property: all;
+  transition-property: transform, width, height;
   transition-duration: 0.4s;
   transition-delay: 1s;
   transition-timing-function: cubic-bezier(0.34, 1.56, 0.8, 1);
@@ -93,7 +93,7 @@
   width: $start-value;
   transition-property: width;
   transition-duration: 0.5s;
-  transition-delay: 0.4s;
+  transition-delay: 0.6s;
   transition-timing-function: cubic-bezier(0, 0.8, 0.46, 1);
 
   .page-ready & {
