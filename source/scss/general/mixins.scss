@@ -1,5 +1,7 @@
 @mixin retina {
-  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+
+  @media (min-resolution: $retina-dpi),
+  (min-resolution: $retina-dppx) {
     @content;
   }
 }
@@ -57,4 +59,44 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+@mixin init-transition-scale($start-value: 0, $finish-value: 1) {
+  transform: translate(-50%, -50%) scale($start-value);
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-delay: 1s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.8, 1);
+
+  .page-ready & {
+    transform: translate(-50%, -50%) scale($finish-value);
+  }
+}
+
+@mixin init-transition-translate($x-value: -100%, $y-value: 0) {
+  transform: translate($x-value, $y-value);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s;
+  transition-delay: 0.4s;
+  transition-timing-function: cubic-bezier(0, 0.8, 0.46, 1);
+
+  .page-ready & {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+
+@mixin init-transition-width($start-value: 0%, $finish-value: 100%) {
+  width: $start-value;
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-delay: 0.4s;
+  transition-timing-function: cubic-bezier(0, 0.8, 0.46, 1);
+
+  .page-ready & {
+    width: $finish-value;
+  }
 }
