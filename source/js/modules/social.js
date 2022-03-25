@@ -5,6 +5,8 @@ export default () => {
 
   socialBlock.addEventListener(`mouseover`, function () {
     socialBlock.classList.add(`social-block--active`);
+    socialBlock.classList.add(`social-block--init`);
+    socialBlockList.classList.add(`social-block__list--active`);
     socialBlockList.classList.add(`social-block__list--active`);
     this.querySelector('button').classList.remove('leave');
   });

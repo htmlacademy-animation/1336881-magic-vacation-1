@@ -21,3 +21,12 @@ social();
 
 const fullPageScroll = new FullPageScroll();
 fullPageScroll.init();
+
+function pageLoad() {
+  window.addEventListener(`load`, () => {
+    document.body.classList.add(`page-ready`);
+  });
+}
+
+
+pageLoad();

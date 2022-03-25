@@ -28,6 +28,7 @@
 
 .page-header__logo {
   @include hover;
+  @include init-transition-translate;
   position: relative;
   flex: none;
   top: -0.5rem;
@@ -172,6 +173,7 @@
 }
 
 .page-header__menu {
+  @include init-transition-translate(0, 0);
   font-family: $font-alt;
   text-transform: uppercase;
   font-weight: 400;
@@ -269,7 +271,8 @@
 
     &.active {
       &::after {
-        width: 100%;
+        @include init-transition-width();
+        left: 0;
       }
     }
 
